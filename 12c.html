@@ -1,0 +1,43 @@
+<!-- 
+    Theory
+    The given program demonstrates node creation, insertion (using appendChild() and insertBefore()), replacement (using replaceChild()), and removal (using removeChild()) operations on the DOM.
+
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manipulating DOM Nodes</title>
+</head>
+<body>
+  <div id="myDiv">
+    <p>This is the original paragraph.</p>
+  </div>
+
+  <script>
+    // Node creation
+    var newParagraph = document.createElement('p');
+    newParagraph.textContent = "This is a newly created paragraph.";
+
+    // Node insertion using appendChild()
+    var myDiv = document.getElementById('myDiv');
+    myDiv.appendChild(newParagraph);
+
+    // Node insertion using insertBefore()
+    var referenceElement = myDiv.firstChild;
+    var anotherParagraph = document.createElement('p');
+    anotherParagraph.textContent = "This is another paragraph inserted before the original one.";
+    myDiv.insertBefore(anotherParagraph, referenceElement);
+
+    // Node replacement using replaceChild()
+    var replacementParagraph = document.createElement('p');
+    replacementParagraph.textContent = "This paragraph replaces the original one.";
+    myDiv.replaceChild(replacementParagraph, referenceElement);
+
+    // Node removal using removeChild()
+    myDiv.removeChild(replacementParagraph);
+
+    // Displaying the modified DOM structure
+    console.log("Modified DOM structure:", myDiv);
+  </script>
+</body>
+</html>

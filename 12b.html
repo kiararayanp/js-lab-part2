@@ -1,0 +1,45 @@
+
+<!-- 
+  Theory
+    The given program demonstrates various methods for selecting document elements using JavaScript, including selecting elements by ID, name, tag type, CSS class, querySelector(), and querySelectorAll().
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selecting Document Elements</title>
+</head>
+<body>
+  <h1 id="myHeading">Hello, World!</h1>
+  <input type="text" name="username" placeholder="Username">
+  <input type="text" name="password" placeholder="Password">
+  <p class="intro">This is an introduction.</p>
+  <p>This is a paragraph.</p>
+
+  <script>
+    // Selecting element by ID
+    var heading = document.getElementById('myHeading');
+    console.log("Element by ID:", heading);
+
+    // Selecting elements by name
+    var usernameInput = document.getElementsByName('username')[0];
+    var passwordInput = document.getElementsByName('password')[0];
+    console.log("Elements by name:", usernameInput, passwordInput);
+
+    // Selecting elements by tag type
+    var paragraphs = document.getElementsByTagName('p');
+    console.log("Elements by tag type:", paragraphs);
+
+    // Selecting elements by CSS class
+    var introParagraph = document.getElementsByClassName('intro')[0];
+    console.log("Element by CSS class:", introParagraph);
+
+    // Selecting element by querySelector()
+    var firstParagraph = document.querySelector('p');
+    console.log("Element by querySelector():", firstParagraph);
+
+    // Selecting elements by querySelectorAll()
+    var allParagraphs = document.querySelectorAll('p');
+    console.log("Elements by querySelectorAll():", allParagraphs);
+  </script>
+</body>
+</html>

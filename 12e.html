@@ -1,0 +1,77 @@
+<!-- 
+    The given program allows users to enter book records into a form, with the Book ID initially set to 100 and incrementing by 1 on each click of the plus button, while displaying the value in a textbox that cannot be edited, and generating a new row with the same structure when the plus button is clicked.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Records</title>
+  <style>
+    .form-field {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Add Book Records</h1>
+
+  <form id="bookForm">
+    <div class="form-field">
+      <label for="bookId">Book ID:</label>
+      <input type="text" id="bookId" value="100" readonly>
+    </div>
+
+    <div class="form-field">
+      <label for="bookTitle">Title:</label>
+      <input type="text" id="bookTitle" required>
+    </div>
+
+    <div class="form-field">
+      <label for="bookAuthor">Author(s):</label>
+      <input type="text" id="bookAuthor" required>
+    </div>
+
+    <div class="form-field">
+      <label for="bookPrice">Price:</label>
+      <input type="text" id="bookPrice" required>
+    </div>
+    <button id="plusButton">+</button>
+    <br><br>
+    <div class="form-field">
+      <input type="submit" value="Save">
+    </div>
+  </form>
+
+
+  <script>
+    var bookForm = document.getElementById('bookForm');
+    var plusButton = document.getElementById('plusButton');
+    var bookIdCounter = 100;
+
+    plusButton.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      var bookIdInput = document.getElementById('bookId');
+      var newBookRow = bookForm.cloneNode(true);
+      bookIdCounter++;
+      bookIdInput.value = bookIdCounter;
+      bookForm.parentNode.insertBefore(newBookRow, bookForm.nextSibling);
+    });
+
+    bookForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var bookId = document.getElementById('bookId').value;
+      var bookTitle = document.getElementById('bookTitle').value;
+      var bookAuthor = document.getElementById('bookAuthor').value;
+      var bookPrice = document.getElementById('bookPrice').value;
+
+      // Perform further processing or data submission
+      // You can access the entered values in the variables above
+      console.log("Book ID:", bookId);
+      console.log("Title:", bookTitle);
+      console.log("Author(s):", bookAuthor);
+      console.log("Price:", bookPrice);
+    });
+  </script>
+</body>
+</html>

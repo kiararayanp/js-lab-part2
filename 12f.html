@@ -1,0 +1,27 @@
+<!-- 
+    Theory
+    The program creates an array of districts, dynamically generates an unordered list (UL) using DOM manipulation, and displays the districts on a web page.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Districts List</title>
+</head>
+<body>
+  <h1>Districts List</h1>
+
+  <ul id="districtList"></ul>
+
+  <script>
+    var districts = ['Kathmandu', 'Makwanpur', 'Dolakha', 'Sindupalchowk', 'Ramechhap'];
+
+    var districtList = document.getElementById('districtList');
+
+    districts.forEach(function(district) {
+      var li = document.createElement('li');
+      li.textContent = district;
+      districtList.appendChild(li);
+    });
+  </script>
+</body>
+</html>

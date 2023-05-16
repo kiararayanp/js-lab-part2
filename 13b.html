@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Regex Patterns Test</title>
+</head>
+<body>
+  <script>
+    function testRegex(pattern, value) {
+      var regex = new RegExp(pattern);
+      return regex.test(value);
+    }
+
+    // i. The first character of a string must be uppercase.
+    console.log(testRegex("^[A-Z].*", "Hello")); // true
+    console.log(testRegex("^[A-Z].*", "world")); // false
+
+    // ii. A given value must contain a question mark, a dash, and an underscore.
+    console.log(testRegex(".*[?-].*", "Test-String")); // true
+    console.log(testRegex(".*[?-].*", "NoSpecialChars")); // false
+
+    // iii. The value must start from A or a and must end with a full stop (.) or exclamation (!).
+    console.log(testRegex("^[Aa].*[.!]$", "Example sentence.")); // true
+    console.log(testRegex("^[Aa].*[.!]$", "Another sentence")); // false
+
+    // iv. The value must contain only one blank space.
+    console.log(testRegex("^.* .*$", "This is a test")); // true
+    console.log(testRegex("^.* .*$", "NoSpacesHere")); // false
+
+    // v. The string must not contain any digits.
+    console.log(testRegex("^\\D*$", "NoDigits")); // true
+    console.log(testRegex("^\\D*$", "1234")); // false
+
+    // vi. The string must contain at least one symbol from the group of symbols (,,, @, $, _, %, !, &, *, ^, ~, -, +, (, ), {, }, [, ], ., :)
+    console.log(testRegex(".*[,@$\\_\\%!\\*&\\^~+\\(\\)\\{\\}\\[\\].:]+.*", "String with $ symbol")); // true
+    console.log(testRegex(".*[,@$\\_\\%!\\*&\\^~+\\(\\)\\{\\}\\[\\].:]+.*", "Symbol-less string")); // false
+
+    // vii. The value must not contain any special characters and digits.
+    console.log(testRegex("^[a-zA-Z]*$", "OnlyLetters")); // true
+    console.log(testRegex("^[a-zA-Z]*$", "String with digits: 1234")); // false
+
+    // viii. The value must contain @ symbol between two words, each of at least one character.
+    console.log(testRegex("^\\w+@\\w+.*$", "example@test.com")); // true
+    console.log(testRegex("^\\w+@\\w+.*$", "noatsymbol.com")); // false
+
+    // ix. The string must not start with a digit.
+    console.log(testRegex("^[^0-9].*$", "StartsWithLetter")); // true
+    console.log(testRegex("^[^0-9].*$", "1StartsWithDigit")); // false
+
+    // x. The string must start with an underscore character or alphabets.
+    console.log(testRegex("^[_a-zA-Z].*$", "_StartsWithUnderscore")); // true
+    console.log(testRegex("^[_a-zA-Z].*$", "StartsWithSymbol")); // false
+
+    // xi. The value must start with 'BCA-TU-' and after these characters, there must be only digits.
+    console.log(testRegex("^BCA-TU-[0-9]*$", "BCA-TU-12345")); //
+    // xii. The value must be in email address format.
+    console.log(testRegex("^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$", "example@example.com")); // true
+    console.log(testRegex("^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$", "invalid.email")); // false
+
+    // xiii. The value must contain at least one vowel letter.
+    console.log(testRegex(".*[aeiouAEIOU].*", "Has vowels")); // true
+    console.log(testRegex(".*[aeiouAEIOU].*", "NoVowels")); // false
+
+    // xiv. The value contains ten digits, and the first digit cannot be 0.
+    console.log(testRegex("^[1-9][0-9]{9}$", "1234567890")); // false
+    console.log(testRegex("^[1-9][0-9]{9}$", "9876543210")); // true
+
+    // xv. The value should be an email address and must end with 'edu.np'
+    console.log(testRegex("^\\w+@[a-zA-Z_]+?\\.edu\\.np$", "example@university.edu.np")); // true
+    console.log(testRegex("^\\w+@[a-zA-Z_]+?\\.edu\\.np$", "example@gmail.com")); // false
+
+    // xvi. The value should be an email address and it must contain 'gmail' or 'yahoo' after the @ symbol.
+    console.log(testRegex("^\\w+@(gmail|yahoo)\\..*$", "example@gmail.com")); // true
+    console.log(testRegex("^\\w+@(gmail|yahoo)\\..*$", "example@hotmail.com")); // false
+
+    // xvii. The regex must match if the string contains 'nepal' case insensitively.
+    console.log(testRegex(".*nepal.*", "Welcome to Nepal!")); // true
+    console.log(testRegex(".*nepal.*", "Welcome to USA!")); // false
+  </script>
+</body>
+</html>

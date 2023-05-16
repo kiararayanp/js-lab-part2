@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Registration Form</h1>
+  <form id="registrationForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required maxlength="50">
+    <span id="firstNameError" class="error"></span>
+    <br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" maxlength="50">
+    <span id="lastNameError" class="error"></span>
+    <br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+    <span id="dobError" class="error"></span>
+    <br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <span id="genderError" class="error"></span>
+    <br>
+
+    <label for="provenience">Provenience:</label>
+    <select id="provenience" name="provenience" required>
+      <option value="">Select Provenience</option>
+      <option value="province1">Province 1</option>
+      <option value="province2">Province 2</option>
+      <option value="bagmati">Bagmati</option>
+      <option value="gandaki">Gandaki</option>
+      <option value="lumbini">Lumbini</option>
+      <option value="karnali">Karnali</option>
+      <option value="sudurpaschim">Sudurpaschim</option>
+    </select>
+    <span id="provenienceError" class="error"></span>
+    <br>
+
+    <label for="district">District:</label>
+    <select id="district" name="district" required>
+      <option value="">Select District</option>
+      <!-- Include options for all 77 districts of Nepal -->
+      <!-- Example options for demonstration purposes -->
+      <option value="kathmandu">Kathmandu</option>
+      <option value="bhaktapur">Bhaktapur</option>
+      <option value="lalitpur">Lalitpur</option>
+    </select>
+    <span id="districtError" class="error"></span>
+    <br>
+
+    <label for="cellPhone">Cell Phone:</label>
+    <input type="tel" id="cellPhone" name="cellPhone" required pattern="[0-9]{10}">
+    <span id="cellPhoneError" class="error"></span>
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <span id="emailError" class="error"></span>
+    <br>
+
+    <label for="userName">User Name:</label>
+    <input type="text" id="userName" name="userName" required minlength="6" maxlength="15" pattern="[A-Za-z][A-Za-z0-

@@ -1,0 +1,34 @@
+<!-- 
+    Theory
+    The given program demonstrates the use of getAttribute(), setAttribute(), hasAttribute(), and removeAttribute() methods in the DOM to work with attributes of an HTML document.
+
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Working with HTML Attributes</title>
+</head>
+<body>
+  <p id="myParagraph" class="highlighted">This is a paragraph.</p>
+
+  <script>
+    var paragraph = document.getElementById('myParagraph');
+
+    // Using getAttribute()
+    var idAttribute = paragraph.getAttribute('id');
+    console.log("ID attribute:", idAttribute);
+
+    // Using setAttribute()
+    paragraph.setAttribute('class', 'bold');
+    console.log("Updated class attribute:", paragraph.className);
+
+    // Using hasAttribute()
+    var hasClassAttribute = paragraph.hasAttribute('class');
+    console.log("Has class attribute:", hasClassAttribute);
+
+    // Using removeAttribute()
+    paragraph.removeAttribute('class');
+    console.log("Removed class attribute:", paragraph.className);
+  </script>
+</body>
+</html>
