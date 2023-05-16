@@ -7,6 +7,7 @@
       color: red;
     }
   </style>
+  <script src="14b.js"></script>
 </head>
 <body>
   <h1>Registration Form</h1>
@@ -14,17 +15,17 @@
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" required maxlength="50">
     <span id="firstNameError" class="error"></span>
-    <br>
+    <br><br>
 
     <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" name="lastName" maxlength="50">
     <span id="lastNameError" class="error"></span>
-    <br>
+    <br><br>
 
     <label for="dob">Date of Birth:</label>
     <input type="date" id="dob" name="dob" required>
     <span id="dobError" class="error"></span>
-    <br>
+    <br><br>
 
     <label for="gender">Gender:</label>
     <select id="gender" name="gender" required>
@@ -34,7 +35,7 @@
       <option value="other">Other</option>
     </select>
     <span id="genderError" class="error"></span>
-    <br>
+    <br><br>
 
     <label for="provenience">Provenience:</label>
     <select id="provenience" name="provenience" required>
@@ -48,7 +49,7 @@
       <option value="sudurpaschim">Sudurpaschim</option>
     </select>
     <span id="provenienceError" class="error"></span>
-    <br>
+    <br><br>
 
     <label for="district">District:</label>
     <select id="district" name="district" required>
@@ -60,17 +61,35 @@
       <option value="lalitpur">Lalitpur</option>
     </select>
     <span id="districtError" class="error"></span>
-    <br>
+    <br><br>
 
     <label for="cellPhone">Cell Phone:</label>
     <input type="tel" id="cellPhone" name="cellPhone" required pattern="[0-9]{10}">
     <span id="cellPhoneError" class="error"></span>
-    <br>
+    <br><br>
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email">
     <span id="emailError" class="error"></span>
-    <br>
+    <br><br>
 
     <label for="userName">User Name:</label>
-    <input type="text" id="userName" name="userName" required minlength="6" maxlength="15" pattern="[A-Za-z][A-Za-z0-
+    <input type="text" id="userName" name="userName" required minlength="6" maxlength="15" pattern="[A-Za-z][A-Za-z0-9_@]{5,14}">
+    <span id="userNameError" class="error"></span>
+    <br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}">
+    <span id="passwordError" class="error"></span>
+    <br><br>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required>
+    <span id="confirmPasswordError" class="error"></span>
+    <br><br>
+    <button type="submit">Register</button> 
+    </form>
+    <script src="script.js"></script>
+  </body>
+  </html>
+    
+    
