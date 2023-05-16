@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Demo</title>
+</head>
+<body>
+  <h2>Cookie Demo</h2>
+  
+  <script>
+    // Create a cookie
+    document.cookie = "username=Kiara Raya";
+
+    // Read a cookie
+    var cookies = document.cookie.split("; ");
+    var username;
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].split("=");
+      if (cookie[0] === "username") {
+        username = cookie[1];
+        break;
+      }
+    }
+    console.log("Username:", username);
+
+    // Change a cookie
+    document.cookie = "username=Kiara Raya";
+
+    // Read the updated cookie
+    cookies = document.cookie.split("; ");
+    for (var j = 0; j < cookies.length; j++) {
+      var updatedCookie = cookies[j].split("=");
+      if (updatedCookie[0] === "username") {
+        username = updatedCookie[1];
+        break;
+      }
+    }
+    console.log("Updated Username:", username);
+
+    // Delete a cookie
+    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    // Read the deleted cookie
+    cookies = document.cookie.split("; ");
+    for (var k = 0; k < cookies.length; k++) {
+      var deletedCookie = cookies[k].split("=");
+      if (deletedCookie[0] === "username") {
+        username = deletedCookie[1];
+        break;
+      }
+    }
+    console.log("Deleted Username:", username);
+  </script>
+</body>
+</html>

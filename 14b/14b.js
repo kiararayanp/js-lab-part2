@@ -1,123 +1,135 @@
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission
+// Function to validate the form on submit
+function validateForm(event) {
+    event.preventDefault(); // Prevent the form from submitting
   
-    // Validate inputs
-    var isValid = true;
+    // Clear existing error messages
+    clearErrorMessages();
   
-    // Validate First Name
-    var firstName = document.getElementById("firstName");
-    var firstNameError = document.getElementById("firstNameError");
-    if (!firstName.value.match(/^[A-Za-z]{1,50}$/)) {
-      firstNameError.textContent = "First Name must contain alphabets only (1 to 50 characters)";
-      isValid = false;
-    } else {
-      firstNameError.textContent = "";
+    // Fetch form inputs
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
+    const dobInput = document.getElementById('dob');
+    const genderInput = document.getElementById('gender');
+    const provienceInput = document.getElementById('provenience');
+    const districtInput = document.getElementById('district');
+    const cellPhoneInput = document.getElementById('cellPhone');
+    const emailInput = document.getElementById('email');
+    const userNameInput = document.getElementById('userName');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+  
+    // Validate first name
+    if (!validateAlphabetsOnly(firstNameInput.value) || !validateLength(firstNameInput.value, 1, 50)) {
+      showError(firstNameInput, 'First name must contain alphabets only and be 1 to 50 characters long.');
     }
   
-    // Validate Last Name
-    var lastName = document.getElementById("lastName");
-    var lastNameError = document.getElementById("lastNameError");
-    if (lastName.value !== "" && !lastName.value.match(/^[A-Za-z]{1,50}$/)) {
-      lastNameError.textContent = "Last Name must contain alphabets only (1 to 50 characters)";
-      isValid = false;
-    } else {
-      lastNameError.textContent = "";
+    // Validate last name
+    if (lastNameInput.value && (!validateAlphabetsOnly(lastNameInput.value) || !validateLength(lastNameInput.value, 1, 50))) {
+      showError(lastNameInput, 'Last name must contain alphabets only and be 1 to 50 characters long.');
     }
   
-    // Validate Date of Birth
-    var dob = document.getElementById("dob");
-    var dobError = document.getElementById("dobError");
-    if (dob.value === "") {
-      dobError.textContent = "Date of Birth is required";
-      isValid = false;
-    } else {
-      dobError.textContent = "";
+    // Validate date of birth
+    if (!dobInput.value) {
+      showError(dobInput, 'Date of birth is required.');
     }
   
-    // Validate Gender
-    var gender = document.getElementById("gender");
-    var genderError = document.getElementById("genderError");
-    if (gender.value === "") {
-      genderError.textContent = "Please select a Gender";
-      isValid = false;
-    } else {
-      genderError.textContent = "";
+    // Validate gender
+    if (genderInput.value === '') {
+      showError(genderInput, 'Please select a gender.');
     }
   
-    // Validate Provenience
-    var provenience = document.getElementById("provenience");
-    var provienceError = document.getElementById("provenienceError");
-    if (provenience.value === "") {
-      provienceError.textContent = "Please select a Provenience";
-      isValid = false;
-    } else {
-      provienceError.textContent = "";
+    // Validate provience
+    if (provenienceInput.value === '') {
+      showError(provenienceInput, 'Please select a provience.');
     }
   
-    // Validate District
-    var district = document.getElementById("district");
-    var districtError = document.getElementById("districtError");
-    if (district.value === "") {
-      districtError.textContent = "Please select a District";
-      isValid = false;
-    } else {
-      districtError.textContent = "";
+    // Validate district
+    if (districtInput.value === '') {
+      showError(districtInput, 'Please select a district.');
     }
   
-    // Validate Cell Phone
-    var cellPhone = document.getElementById("cellPhone");
-    var cellPhoneError = document.getElementById("cellPhoneError");
-    if (!cellPhone.value.match(/^[0-9]{10}$/)) {
-      cellPhoneError.textContent = "Cell Phone must be 10 digits only";
-      isValid = false;
-    } else {
-      cellPhoneError.textContent = "";
+    // Validate cell phone
+    if (!validateCellPhone(cellPhoneInput.value)) {
+      showError(cellPhoneInput, 'Cell phone number must be 10 digits only.');
     }
   
-    // Validate Email
-    var email = document.getElementById("email");
-    var emailError = document.getElementById("emailError");
-    if (email.value !== "" && !email.value.match(/^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/)) {
-        emailError.textContent = "Invalid Email Address";
-        isValid = false;
-        } else {
-        emailError.textContent = "";
-        }
-        
-        // Validate User Name
-        var userName = document.getElementById("userName");
-        var userNameError = document.getElementById("userNameError");
-        if (!userName.value.match(/^[A-Za-z][A-Za-z0-9_@]{5,14}$/)) {
-        userNameError.textContent = "User Name must start with an alphabet and can contain digits and only two special characters (@ and _). Length must be 6 to 15 characters";
-        isValid = false;
-        } else {
-        userNameError.textContent = "";
-        }
-        
-        // Validate Password
-        var password = document.getElementById("password");
-        var passwordError = document.getElementById("passwordError");
-        if (!password.value.match(/^(?=.\d)(?=.[!@#$%^&])(?=.[a-z])(?=.*[A-Z]).{8,20}$/)) {
-        passwordError.textContent = "Password must contain at least one digit, one special character, one uppercase letter, and one lowercase letter. Length must be 8 to 20 characters";
-        isValid = false;
-        } else {
-        passwordError.textContent = "";
-        }
-        
-        // Validate Confirm Password
-        var confirmPassword = document.getElementById("confirmPassword");
-        var confirmPasswordError = document.getElementById("confirmPasswordError");
-        if (confirmPassword.value !== password.value) {
-        confirmPasswordError.textContent = "Passwords do not match";
-        isValid = false;
-        } else {
-        confirmPasswordError.textContent = "";
-        }
-        
-        // Submit the form if all inputs are valid
-        if (isValid) {
-        alert("Registration successful!");
-        this.submit();
-        }
-        });
+    // Validate email
+    if (emailInput.value && !validateEmail(emailInput.value)) {
+      showError(emailInput, 'Please enter a valid email address.');
+    }
+  
+    // Validate username
+    if (!validateUsername(userNameInput.value)) {
+      showError(userNameInput, 'Username must start with an alphabet, contain digits, and be 6 to 15 characters long.');
+    }
+  
+    // Validate password
+    if (!validatePassword(passwordInput.value)) {
+      showError(
+        passwordInput,
+        'Password must contain at least a digit, a special character, an uppercase letter, and a lowercase letter. It should be 8 to 20 characters long.'
+      );
+    }
+  
+    // Validate confirm password
+    if (confirmPasswordInput.value !== passwordInput.value) {
+      showError(confirmPasswordInput, 'Passwords do not match.');
+    }
+  
+    // Submit the form if there are no errors
+    if (!document.querySelectorAll('.error').length) {
+      document.getElementById('registrationForm').submit();
+    }
+  }
+  
+  // Function to validate if a value contains alphabets only
+  function validateAlphabetsOnly(value) {
+    const regex = /^[A-Za-z]+$/;
+    return regex.test(value);
+  }
+  
+  // Function to validate if a value is within a specified length range
+  function validateLength(value, min, max) {
+    return value.length >= min && value.length <= max;
+  }
+  
+  // Function to validate cell phone number (10digits only)
+function validateCellPhone(value) {
+    const regex = /^\d{10}$/;
+    return regex.test(value);
+    }
+    
+    // Function to validate email address format
+    function validateEmail(value) {
+    const regex = /\S+@\S+.\S+/;
+    return regex.test(value);
+    }
+    
+    // Function to validate username (starts with alphabet, allows digits, and length between 6 to 15 characters)
+    function validateUsername(value) {
+    const regex = /^[A-Za-z][A-Za-z0-9_@]{5,14}$/;
+    return regex.test(value);
+    }
+    
+    // Function to validate password (at least a digit, a special character, an uppercase letter, and a lowercase letter; length between 8 to 20 characters)
+    function validatePassword(value) {
+    const regex = /(?=.\d)(?=.[!@#$%^&])(?=.[a-z])(?=.*[A-Z]).{8,20}/;
+    return regex.test(value);
+    }
+    
+    // Function to display an error message next to an input field
+    function showError(input, message) {
+    const errorSpan = input.nextElementSibling;
+    errorSpan.textContent = message;
+    }
+    
+    // Function to clear all error messages
+    function clearErrorMessages() {
+    const errorSpans = document.getElementsByClassName('error');
+    Array.from(errorSpans).forEach((span) => (span.textContent = ''));
+    }
+    
+    // Attach form submit event listener
+    const registrationForm = document.getElementById('registrationForm');
+    registrationForm.addEventListener('submit', validateForm);
   
