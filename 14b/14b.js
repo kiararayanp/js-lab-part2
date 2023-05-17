@@ -1,135 +1,117 @@
-// Function to validate the form on submit
-function validateForm(event) {
-    event.preventDefault(); // Prevent the form from submitting
-  
-    // Clear existing error messages
-    clearErrorMessages();
-  
-    // Fetch form inputs
-    const firstNameInput = document.getElementById('firstName');
-    const lastNameInput = document.getElementById('lastName');
-    const dobInput = document.getElementById('dob');
-    const genderInput = document.getElementById('gender');
-    const provienceInput = document.getElementById('provenience');
-    const districtInput = document.getElementById('district');
-    const cellPhoneInput = document.getElementById('cellPhone');
-    const emailInput = document.getElementById('email');
-    const userNameInput = document.getElementById('userName');
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirmPassword');
-  
-    // Validate first name
-    if (!validateAlphabetsOnly(firstNameInput.value) || !validateLength(firstNameInput.value, 1, 50)) {
-      showError(firstNameInput, 'First name must contain alphabets only and be 1 to 50 characters long.');
-    }
-  
-    // Validate last name
-    if (lastNameInput.value && (!validateAlphabetsOnly(lastNameInput.value) || !validateLength(lastNameInput.value, 1, 50))) {
-      showError(lastNameInput, 'Last name must contain alphabets only and be 1 to 50 characters long.');
-    }
-  
-    // Validate date of birth
-    if (!dobInput.value) {
-      showError(dobInput, 'Date of birth is required.');
-    }
-  
-    // Validate gender
-    if (genderInput.value === '') {
-      showError(genderInput, 'Please select a gender.');
-    }
-  
-    // Validate provience
-    if (provenienceInput.value === '') {
-      showError(provenienceInput, 'Please select a provience.');
-    }
-  
-    // Validate district
-    if (districtInput.value === '') {
-      showError(districtInput, 'Please select a district.');
-    }
-  
-    // Validate cell phone
-    if (!validateCellPhone(cellPhoneInput.value)) {
-      showError(cellPhoneInput, 'Cell phone number must be 10 digits only.');
-    }
-  
-    // Validate email
-    if (emailInput.value && !validateEmail(emailInput.value)) {
-      showError(emailInput, 'Please enter a valid email address.');
-    }
-  
-    // Validate username
-    if (!validateUsername(userNameInput.value)) {
-      showError(userNameInput, 'Username must start with an alphabet, contain digits, and be 6 to 15 characters long.');
-    }
-  
-    // Validate password
-    if (!validatePassword(passwordInput.value)) {
-      showError(
-        passwordInput,
-        'Password must contain at least a digit, a special character, an uppercase letter, and a lowercase letter. It should be 8 to 20 characters long.'
-      );
-    }
-  
-    // Validate confirm password
-    if (confirmPasswordInput.value !== passwordInput.value) {
-      showError(confirmPasswordInput, 'Passwords do not match.');
-    }
-  
-    // Submit the form if there are no errors
-    if (!document.querySelectorAll('.error').length) {
-      document.getElementById('registrationForm').submit();
-    }
+const submit = document.getElementById("submit");
+// List of functions
+
+// check if string is empty
+const isEmpty = (str) => str.length === 0;
+// check if string length is between min and max
+const checkLength = (str, min, max) => str.length <= max && str.length >= min;
+// check if string contains only alphabets
+const alphabetOnly = (str) => {
+  let pattern = /^[a-zA-Z]+$/;
+  return pattern.test(str);
+};
+// check if string contains only numbers
+const numberOnly = (str) => {
+  let pattern = /^[0-9]+$/;
+  return pattern.test(str);
+};
+//check if two strings are equal
+const checkEqual = (str1, str2) => str1 === str2;
+// check if string is valid
+const isValidString = (str) => {
+  let pattern = /^[a-zA-Z][a-zA-Z0-9@_]{0,}[a-zA-Z0-9]{0,1}$/;
+  return pattern.test(str);
+};
+// check if password is valid
+const isValidPassword = (str) => {
+  var pattern = /^(?=.*\d)(?=.*[@_])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z\d@_]+$/;
+  return pattern.test(str);
+};
+submit.addEventListener("click", (e) => {
+  e.preventDefault();
+  // extracting DOM objects
+  const fname = document.getElementById("fname");
+  const lname = document.getElementById("lname");
+  const dob = document.getElementById("dob");
+  const gender = document.getElementById("gender");
+  const province = document.getElementById("province");
+  const district = document.getElementById("district");
+  const phone = document.getElementById("phone");
+  const email = document.getElementById("email");
+  const username = document.getElementById("username");
+  const password1 = document.getElementById("password1");
+  const password2 = document.getElementById("password2");
+  // error message container
+  const fnameMessage = document.getElementById("fname-message");
+  const lnameMessage = document.getElementById("lname-message");
+  const dobMessage = document.getElementById("dob-message");
+  const genderMessage = document.getElementById("gender-message");
+  const provinceMessage = document.getElementById("province-message");
+  const districtMessage = document.getElementById("district-message");
+  const phoneMessage = document.getElementById("phone-message");
+  const emailMessage = document.getElementById("email-message");
+  const usernameMessage = document.getElementById("username-message");
+  const password1Message = document.getElementById("password1-message");
+  const password2Message = document.getElementById("password2-message");
+
+  // first name validation
+  if (isEmpty(fname.value)) {
+    fnameMessage.innerText = "  Field can not be empty.";
+  } else if (!checkLength(fname.value, 2, 50)) {
+    fnameMessage.innerText = "  Field must be 2 to 50 characters.";
+  } else {
+    fnameMessage.innerText = "";
   }
-  
-  // Function to validate if a value contains alphabets only
-  function validateAlphabetsOnly(value) {
-    const regex = /^[A-Za-z]+$/;
-    return regex.test(value);
+  // last name validation
+  if (isEmpty(lname.value)) {
+    lnameMessage.innerText = "  Field can not be empty.";
+  } else if (!checkLength(fname.value, 2, 50)) {
+    lnameMessage.innerText = "  Field must be 2 to 50 characters.";
+  } else {
+    lnameMessage.innerText = "";
   }
-  
-  // Function to validate if a value is within a specified length range
-  function validateLength(value, min, max) {
-    return value.length >= min && value.length <= max;
+  // date of birth validation
+  if (isEmpty(dob.value)) {
+    dobMessage.innerText = "  Field can not be empty.";
+  } else {
+    dobMessage.innerText = "";
   }
-  
-  // Function to validate cell phone number (10digits only)
-function validateCellPhone(value) {
-    const regex = /^\d{10}$/;
-    return regex.test(value);
-    }
-    
-    // Function to validate email address format
-    function validateEmail(value) {
-    const regex = /\S+@\S+.\S+/;
-    return regex.test(value);
-    }
-    
-    // Function to validate username (starts with alphabet, allows digits, and length between 6 to 15 characters)
-    function validateUsername(value) {
-    const regex = /^[A-Za-z][A-Za-z0-9_@]{5,14}$/;
-    return regex.test(value);
-    }
-    
-    // Function to validate password (at least a digit, a special character, an uppercase letter, and a lowercase letter; length between 8 to 20 characters)
-    function validatePassword(value) {
-    const regex = /(?=.\d)(?=.[!@#$%^&])(?=.[a-z])(?=.*[A-Z]).{8,20}/;
-    return regex.test(value);
-    }
-    
-    // Function to display an error message next to an input field
-    function showError(input, message) {
-    const errorSpan = input.nextElementSibling;
-    errorSpan.textContent = message;
-    }
-    
-    // Function to clear all error messages
-    function clearErrorMessages() {
-    const errorSpans = document.getElementsByClassName('error');
-    Array.from(errorSpans).forEach((span) => (span.textContent = ''));
-    }
-    
-    // Attach form submit event listener
-    const registrationForm = document.getElementById('registrationForm');
-    registrationForm.addEventListener('submit', validateForm);
-  
+  // phone number validation
+  if (isEmpty(phone.value)) {
+    phoneMessage.innerText = "  Field can not be empty.";
+  } else if (!numberOnly(phone.value)) {
+    phoneMessage.innerText = "  Phone must be numbers.";
+  } else if (!checkLength(phone.value, 10, 10)) {
+    phoneMessage.innerText = "  Phone must be 10 digits.";
+  } else {
+    phoneMessage.innerText = "";
+  }
+  // username validation
+  if (isEmpty(username.value)) {
+    usernameMessage.innerText = "  Field can not be empty.";
+  } else if (!checkLength(username.value, 6, 15)) {
+    usernameMessage.innerText = "  Username must be 6 to 15 characters.";
+  } else if (!isValidString(username.value)) {
+    usernameMessage.innerText = "  Username must be alphanumeric.";
+  } else {
+    usernameMessage.innerText = "";
+  }
+  // password validation
+  if (isEmpty(password1.value)) {
+    password1Message.innerText = "  Field can not be empty.";
+  } else if (!checkLength(password1.value, 8, 20)) {
+    password1Message.innerText = "  Password must be 8 to 20 characters.";
+  } else if (!isValidPassword(password1.value)) {
+    password1Message.innerText = "  Password must be alphanumeric.";
+  } else {
+    password1Message.innerText = "";
+  }
+  // confirm password
+  if (isEmpty(password2.value)) {
+    password2Message.innerText = "  Field can not be empty.";
+  } else if (!checkEqual(password1.value, password2.value)) {
+    password2Message.innerText = "  Password does not match.";
+  } else {
+    password2Message.innerText = "";
+  }
+});

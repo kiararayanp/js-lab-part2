@@ -1,94 +1,60 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-  <title>Registration Form</title>
   <style>
     .error {
       color: red;
     }
   </style>
 </head>
+
 <body>
   <h1>Registration Form</h1>
-  <form id="registrationForm">
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required maxlength="50">
-    <span id="firstNameError" class="error"></span>
-    <br><br>
+  Fisrt Name: <input type="text" name="" id="fname" placeholder="First Name" required><span class="error" id="fname-message"></span>
+  <br><br>
+  Last Name: <input type="text" name="" id="lname" placeholder="Last Name" required><span class="error" id="lname-message"></span>
+  <br><br>
+  Date of birth: <input type="date" name="" id="dob"> <span class="error" id="dob-message"></span>
+  <br><br>
+  Gender: <select name="" id="gender" required> <span class="error" id="gender-message"></span>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+  </select>
+  <br><br>
+  Province: <select name="" id="province" required><span class="error" id="province-message"></span>
+    <option value="koshi">Koshi</option>
+    <option value="madhesh">Madhesh</option>
+    <option value="bagmati">Bagmati</option>
+    <option value="gandaki">Gandaki</option>
+    <option value="lumbini">Lumbini</option>
+    <option value="karnali">Karnali</option>
+    <option value="sudurpaschim">Sudurpaschim</option>
+  </select>
+  <br><br>
+  District: <select name="" id="district" required><span class="error" id="district-message"></span>
+    <option value="Taplejung">Taplejung</option>
+    <option value="Panchthar">Panchthar</option>
+    <option value="Ilam">Ilam</option>
+    <option value="Jhapa">Jhapa</option>
+  </select>
+  <br><br>
+  Phone Number: <input type="text" name="" id="phone" placeholder="Phone Number" required><span class="error"
+    id="phone-message"></span>
+  <br><br>
+  Email: <input type="email" name="" id="email" placeholder="Email Address"><span class="error" id="email-message"></span>
+  <br><br>
+  Username: <input type="text" name="" id="username" placeholder="Username" required><span class="error"
+    id="username-message"></span>
+  <br><br>
+  Password: <input type="password" name="" id="password1" placeholder="Password" required><span class="error"
+    id="password1-message"></span>
+  <br><br>
+  Confirm Password: <input type="password" name="" id="password2" placeholder="Confirm Password" required><span class="error"
+    id="password2-message"></span>
+  <br><br>
+  <button type="submit" id="submit">Register</button>
+  <script src="14b.js"></script>
+</body>
 
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" maxlength="50">
-    <span id="lastNameError" class="error"></span>
-    <br><br>
-
-    <label for="dob">Date of Birth:</label>
-    <input type="date" id="dob" name="dob" required>
-    <span id="dobError" class="error"></span>
-    <br><br>
-
-    <label for="gender">Gender:</label>
-    <select id="gender" name="gender" required>
-      <option value="">Select Gender</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="other">Other</option>
-    </select>
-    <span id="genderError" class="error"></span>
-    <br><br>
-
-    <label for="provenience">Province:</label>
-    <select id="provenience" name="provenience" required>
-      <option value="">Select Provenience</option>
-      <option value="province1">Province 1</option>
-      <option value="province2">Province 2</option>
-      <option value="bagmati">Bagmati</option>
-      <option value="gandaki">Gandaki</option>
-      <option value="lumbini">Lumbini</option>
-      <option value="karnali">Karnali</option>
-      <option value="sudurpaschim">Sudurpaschim</option>
-    </select>
-    <span id="provenienceError" class="error"></span>
-    <br><br>
-
-    <label for="district">District:</label>
-    <select id="district" name="district" required>
-      <option value="">Select District</option>
-      <!-- Include options for all 77 districts of Nepal -->
-      <!-- Example options for demonstration purposes -->
-      <option value="kathmandu">Kathmandu</option>
-      <option value="bhaktapur">Bhaktapur</option>
-      <option value="lalitpur">Lalitpur</option>
-    </select>
-    <span id="districtError" class="error"></span>
-    <br><br>
-
-    <label for="cellPhone">Cell Phone:</label>
-    <input type="tel" id="cellPhone" name="cellPhone" required pattern="[0-9]{10}">
-    <span id="cellPhoneError" class="error"></span>
-    <br><br>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
-    <span id="emailError" class="error"></span>
-    <br><br>
-
-    <label for="userName">User Name:</label>
-    <input type="text" id="userName" name="userName" required minlength="6" maxlength="15" pattern="[A-Za-z][A-Za-z0-9_@]{5,14}">
-    <span id="userNameError" class="error"></span>
-    <br><br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}">
-    <span id="passwordError" class="error"></span>
-    <br><br>
-
-    <label for="confirmPassword">Confirm Password:</label>
-    <input type="password" id="confirmPassword" name="confirmPassword" required>
-    <span id="confirmPasswordError" class="error"></span>
-    <br><br>
-    <button type="submit">Register</button> 
-    </form>
-    <script src="./14b.js"></script>
-  </body>
-  </html>
-    
-    
+</html>
