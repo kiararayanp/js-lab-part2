@@ -56,7 +56,7 @@ submit.addEventListener("click", (e) => {
 
   // first name validation
   if (isEmpty(fname.value)) {
-    fnameMessage.innerText = "  Field can not be empty.";
+    fnameMessage.innerText = "Please nter your fisrt name!";
   } else if (!checkLength(fname.value, 2, 50)) {
     fnameMessage.innerText = "  Field must be 2 to 50 characters.";
   } else {
@@ -64,7 +64,7 @@ submit.addEventListener("click", (e) => {
   }
   // last name validation
   if (isEmpty(lname.value)) {
-    lnameMessage.innerText = "  Field can not be empty.";
+    lnameMessage.innerText = "Please enter your last name!";
   } else if (!checkLength(fname.value, 2, 50)) {
     lnameMessage.innerText = "  Field must be 2 to 50 characters.";
   } else {
@@ -72,13 +72,13 @@ submit.addEventListener("click", (e) => {
   }
   // date of birth validation
   if (isEmpty(dob.value)) {
-    dobMessage.innerText = "  Field can not be empty.";
+    dobMessage.innerText = "Please select a date!";
   } else {
     dobMessage.innerText = "";
   }
   // phone number validation
   if (isEmpty(phone.value)) {
-    phoneMessage.innerText = "  Field can not be empty.";
+    phoneMessage.innerText = "Please enter your phone number!";
   } else if (!numberOnly(phone.value)) {
     phoneMessage.innerText = "  Phone must be numbers.";
   } else if (!checkLength(phone.value, 10, 10)) {
@@ -88,7 +88,7 @@ submit.addEventListener("click", (e) => {
   }
   // username validation
   if (isEmpty(username.value)) {
-    usernameMessage.innerText = "  Field can not be empty.";
+    usernameMessage.innerText = " Enter a username!";
   } else if (!checkLength(username.value, 6, 15)) {
     usernameMessage.innerText = "  Username must be 6 to 15 characters.";
   } else if (!isValidString(username.value)) {
@@ -98,17 +98,17 @@ submit.addEventListener("click", (e) => {
   }
   // password validation
   if (isEmpty(password1.value)) {
-    password1Message.innerText = "  Field can not be empty.";
+    password1Message.innerText = "Please enter your password.";
   } else if (!checkLength(password1.value, 8, 20)) {
     password1Message.innerText = "  Password must be 8 to 20 characters.";
   } else if (!isValidPassword(password1.value)) {
-    password1Message.innerText = "  Password must be alphanumeric.";
+    password1Message.innerText = "  Password must contain at least a digit, a special character, an uppercase letter and a lowercase letter!";
   } else {
     password1Message.innerText = "";
   }
   // confirm password
   if (isEmpty(password2.value)) {
-    password2Message.innerText = "  Field can not be empty.";
+    password2Message.innerText = " Please re-enter your password.";
   } else if (!checkEqual(password1.value, password2.value)) {
     password2Message.innerText = "  Password does not match.";
   } else {
